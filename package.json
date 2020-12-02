@@ -1,0 +1,16 @@
+{
+  "name": "adventofcode2020",
+  "version": "1.0.0",
+  "description": "Advent of Code is an Advent calendar of small programming puzzles for a variety of skill sets and skill levels that can be solved in any programming language you like.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jon Ribeiro <contact@jonathas.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^14.14.10"
+  },
+  "dependencies": {
+    "ts-node": "^9.0.0"
+  }
+}
