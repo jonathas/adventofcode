@@ -12,7 +12,7 @@ interface Rule {
 }
 
 enum RuleType {
-    TOBOGAN = "TOBOGAN",
+    TOBOGGAN = "TOBOGGAN",
     SLEDRENTAL = "SLEDRENTAL"
 }
 
@@ -24,7 +24,7 @@ class TobogganPolicy {
     }
 
     public async calculate(ruleType: RuleType) {
-        if (ruleType !== RuleType.SLEDRENTAL && ruleType !== RuleType.TOBOGAN) {
+        if (ruleType !== RuleType.SLEDRENTAL && ruleType !== RuleType.TOBOGGAN) {
             throw new Error("Rule not implemented!");
         }
         const input = await Util.readFile(this.filePath);
@@ -35,7 +35,7 @@ class TobogganPolicy {
     private isPasswordValid(row: string, ruleType: RuleType): boolean {
         const parsedRow = this.parseRow(row);
 
-        if (ruleType === RuleType.TOBOGAN) {
+        if (ruleType === RuleType.TOBOGGAN) {
             return this.isTobogganRuleValid(parsedRow);
         }
         return this.isSledRentalRuleValid(parsedRow);
