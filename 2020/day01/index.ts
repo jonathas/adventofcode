@@ -48,7 +48,7 @@ class ExpenseReport {
     }
 }
 
-const er = new ExpenseReport(`${__dirname}/expense_report.txt`, 2020);
+const er = new ExpenseReport(`${__dirname}/input.txt`, 2020);
 
 er.calculate(3)
     .then(data => console.log(data))
