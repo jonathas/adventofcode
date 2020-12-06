@@ -20,7 +20,9 @@ class TobogganTrajectory {
         this.map = await this.getMap();
 
         while (this.coordinates.y < this.map.length) {
-            this.move(inXAxis, inYAxis);
+            if (this.move(inXAxis, inYAxis) && this.isLocationATree()) {
+                this.treesCount++;
+            }
         }
 
         return this.treesCount;
@@ -37,12 +39,12 @@ class TobogganTrajectory {
         return input.split("\n").filter(row => row).map(row => row.split(""));
     }
 
-    private move(inXAxis: number, inYAxis: number): void {
+    private move(inXAxis: number, inYAxis: number): boolean {
         this.coordinates.x += inXAxis;
         this.coordinates.y += inYAxis;
 
-        if (this.isItTheEnd()) {
-            return;
+        if (this.coordinates.y >= this.map.length) {
+            return false;
         }
 
         const currentYLength = this.map[this.coordinates.y].length;
@@ -54,17 +56,11 @@ class TobogganTrajectory {
             this.coordinates.x -= currentYLength;
         }
 
-        this.countTree();
-    }
-
-    private isItTheEnd(): boolean {
-        return this.coordinates.y >= this.map.length;
+        return true;
     }
     
-    private countTree() {
-        if (this.map[this.coordinates.y][this.coordinates.x] === "#") {
-            this.treesCount++;
-        }
+    private isLocationATree(): boolean {
+        return this.map[this.coordinates.y][this.coordinates.x] === "#";
     }
 }
 
